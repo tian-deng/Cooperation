@@ -15,27 +15,22 @@ void quick_sort(int arrays[], int low, int high)
     int i = low;
     int j = high;
     int key = arrays[low];
+
     while (low < high)
     {
         while (low < high && key <= arrays[high])
             --high;
-        if (key > arrays[high])
-        {
-            swap(&arrays[low], &arrays[high]);
+        swap(&arrays[low], &arrays[high]);
+        while (low < high && key >= arrays[low])
             ++low;
-        }
-        if (key < arrays[low])
-        {
-            swap(&arrays[low], &arrays[high]);
-            --high;
-        }
+        swap(&arrays[low], &arrays[high]);
     }
     quick_sort(arrays, i, low - 1);
     quick_sort(arrays, low + 1, j);
 }
 void sort(int arrays[], int length)
 {
-    quick_sort(arrays, 0, length);
+    quick_sort(arrays, 0, length - 1);
 }
 int search(int arrays[], int length, int target)
 {
