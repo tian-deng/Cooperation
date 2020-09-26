@@ -37,3 +37,24 @@ void sort(int arrays[], int length)
 {
     quick_sort(arrays, 0, length);
 }
+int search(int arrays[], int length, int target)
+{
+    int left = 0, right = length - 1, mid;
+    while (left <= right)
+    {
+        mid = (left + right) / 2;
+        if (target < arrays[mid])
+        {
+            right = mid - 1;
+        }
+        else if (target > arrays[mid])
+        {
+            left = mid + 1;
+        }
+        else
+        {
+            return mid;
+        }
+    }
+    return -1;
+}
